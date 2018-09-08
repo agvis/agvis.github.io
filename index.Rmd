@@ -1,29 +1,55 @@
 ---
-title: "Test"
+title: "Initial Test"
 
-output: html_document
+output:
+  html_document:
+    css: additionalcss.css
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r out.width = "100%", echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE}
+library("tigris")
+library("leaflet")
+library("scales")
+library("stringr")
+
+
+# counties = counties(cb=TRUE)
+load("counties.RData")
+
+agdata = read.csv("countyagsummary2012.csv",stringsAsFactors=FALSE)
+agdata$GEOID = str_pad(agdata$GEOID,5,"left",pad="0")
+
+ncomm = 16
+maxDiffColors = c(c("#E41A1C","#0000FF","#00FF00","#FFA500","#E7298A",
+                    "#000080","#00FFFF","#008000","#800080","#008080",
+                    "#FFFF00","#800000","#A65628","#F781BF","#1B9E77",
+                    "#808000","#4DAF4A","#377EB8","#FF4500")[
+                      c(15,2,3,6,18,8,10,16,9,12,19,1,4,5,11,13)])
+
+plotCols = maxDiffColors[1:ncomm]
+
+# maximum entropy in this case is log(1/ncomm)
+nbins = 7
+colorMatrix = sapply(plotCols,function(x){
+  colorRampPalette(c(x,"#FFFFFF"))(nbins+1)[-(nbins+1)]
+})
+
+farmmap = geo_join(counties,agdata,"GEOID","GEOID")
+
+diversitycomm = colorMatrix[
+  cbind(as.numeric(cut(farmmap@data$farmentropy,nbins)),farmmap@data$dominantcomm)]
+
+m = leaflet(farmmap) %>% setView(-96,37.8,4.2)
+
+m = m %>% addPolygons(
+		  fillColor = diversitycomm,
+		  label = paste(farmmap@data$county,", ",farmmap@data$state,
+				" - ",gsub("\\.+"," ",colnames(agdata)[4:19][farmmap@data$dominantcomm]),
+				" - Commodity Diversity: ",round(farmmap@data$farmentropy*100)/100,sep=""),
+		  weight = 0.5,
+		  opacity = 1,
+		  color = "#D3D3D3",
+		  fillOpacity = 0.9) #%>%
+m
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

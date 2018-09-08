@@ -1,5 +1,8 @@
 .DS_Store
 draft.Rmd
 draft.html
-
+.additionalcss.css.swp
+additionalcss.css~
+index_cache/
+.gitignore~
 
