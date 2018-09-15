@@ -270,7 +270,7 @@ legend("left",legend=gsub("\\.+"," ",colnames(agdata)[4:(4+ncomm-1)]),
        pch=15,col=commCols,cex=0.75,pt.cex=1.6,bty="n")
 ```
 
-We should be especially concerned about agricultural diversity because the prices of commodities are known to be particularly volatile. This volatility happens because of charcteristics of supply and demand. For certain crops, the supply depends on uncertain factors like weather and pests and the demand for that crop is rather fixed. For example, if the price of onions goes down, you are unlikely to respond by eating more onions. Therefore, an influx of onions on the market will be accompanied by a drastic fall in price.An interesting [story](https://www.npr.org/sections/money/2015/10/14/448718171/episode-657-the-tale-of-the-onion-king) of cornering the onion market can be heard here. 
+We should be especially concerned about agricultural diversity because the prices of commodities are known to be particularly volatile. This volatility happens because of charcteristics of supply and demand. For certain crops, the supply depends on uncertain factors like weather and pests and the demand for that crop is rather fixed. For example, if the price of onions goes down, you are unlikely to respond by eating more onions. Therefore, an influx of onions on the market will be accompanied by a drastic fall in price. An interesting [story](https://www.npr.org/sections/money/2015/10/14/448718171/episode-657-the-tale-of-the-onion-king) of cornering the onion market can be heard here. 
 
 So diversification seems like a good strategy, it helps reduce and mitigate risks and provides consumers with more variety. So we would expect communities that are tied to a monoculture and do not spread their risk to be poorly buffered against price shocks. However, from the diversity maps, we can see that counties across the U.S. skew toward monoculture. Why is this?
 
@@ -279,33 +279,51 @@ This is where government payments and insurance play a role.
 
 ## Government payments
 
-The question is, what is the role of government payments? Should government payments (1) protect farmers against price shocks so that they don’t lose everything if a bad year hits? (2) incentivize farmers to produce enough food so that people don’t go hungry? (3) make sure that farms don’t overtake natural wildlife? The U.S Farm Bill encompasses all three goals. The bill helps codify crop insurance in the U.S and has huge impact on what is grown, produced and eaten.
+The question is, what is the role of government payments? Should government payments (1) protect farmers against price shocks so that they don’t lose everything if a bad year hits? (2) incentivize farmers to produce enough food so that people don’t go hungry? (3) make sure that farms don’t overtake natural wildlife? The U.S Farm Bill encompasses all three goals. The bill helps codify crop insurance in the U.S and has huge impact on what is grown, produced and eaten. The Farm Bill can be rather controversial. Some consider it “welfare for the well-off” and others highlight its importance to stable food supply.  Regardless of the view, we wanted to know who gets the subsidies?
 
-Government payments and insurance on specific commodities can incentivize large monoculture farms because the risk is no longer borne by the farmer. If the crop fails, the insurance will cover the farmer. This can have a feedback effect where more insurance is needed to protect against instability of monoculture. This is why the Farm Bill can become controversial and divisive. Some consider it “welfare for the well-off” and others highlight its importance to stable food supply.  Regardless of the view, we wanted to know who gets the subsidies?
+In asking this question, we encountered the paradoxical situation that the largest amount of government payments happen to be going to areas with the highest market value of commodities. This is because the largest farms have the highest market value of commodities, but the largest farms also receive the highest amounts in government payments. Additionally, the amount of government payments is actually calculated based on market value of the commodities. So there's a positive feedbackloop. And oddly enough, farmers receive [large payments on good years and very little on bad years](https://www.farmaid.org/blog/farm-bill-101/).
 
-In asking this question, we encountered the paradoxical situation that the largest amount of government payments happen to be going to areas with the highest market value of commodities.
+```{r fig.width=11, fig.height=5, out.width = "90%", echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE, eval=TRUE, fig.align='center'}
+layout(matrix(1:2,ncol=2),widths=c(1,1))
+par(mar=c(4,4,4,3))
+plot(log10(agdata$Market.Value.of.Products.Sold),log10(agdata$Government.Payments),
+     col=commCols[agdata$dominantcomm],
+     #xlim=c(1,max(log10(agdata$Average.Size.of.Farm),na.rm=TRUE)),
+     ylab = "log10(Total Government Spending in County)",
+     xlab="log10(Market Value of Products Sold)",main="Government Spending is Directly Tied to\nMarket Value of Products Sold")
+par(mar=c(4,4,4,3))
+plot(log10(agdata$Average.Size.of.Farm),agdata$farmentropy,
+     col=commCols[agdata$dominantcomm],
+     xlim=c(1,max(log10(agdata$Average.Size.of.Farm),na.rm=TRUE)),
+     xlab = "log10(Average Acres Per Farm in County)",
+     ylab="County Commodity Diversity",main="Farm Size Limits Diversity of\nCommodities Produced")
+```
 
-We mapped the data on two metrics:
+Additionally, some forms of government payments and insurance on specific commodities can incentivize large monoculture farms because the risk is no longer borne by the farmer. This can have another positive feedback effect where more insurance is needed to protect against instability of increasing monoculture.
+
+So we can't help but wonder, is this a desirable situation? Is this a dangerous situation? Could these positive feedback loops be conducive to large farms becoming too big to fail?
+
+Next, we mapped the data on two metrics:
 1) government payments per farms in the county; and 
 2) government payments per acre of farmland in the county. 
 
-The resulting maps tell two different stories. Normalized by number of farms, the region with large farms gets most. On a per acre basis, the spending is highest in the [corn-belt](https://en.wikipedia.org/wiki/Corn_Belt#/media/File:Corn_belt.svg), which emphasizes that in America, [corn is king](https://grist.org/food/these-charts-show-why-corn-is-king/) - including king of subsides.
-
 ![](images/Government_Spending_3.png)
 
-Despite these two metrics, some regions gain and loose regardless of the metric. Such as east North Dakota, parts of Louisiana and Arkansa and regions in Arizona.
+<div id="aside">
+**Aside: What’s going on in Arizona?** In looking at the spending maps, Apache, Navajo and Coconino counties in Arizona all stood out. This region had low subsidies any way we cut it (government spending per acre or government spending per farm). Seemingly coincidentally, they were also high in diversity, medium sized farms, and parity in farmer genders. Why is this region such an outlier? It turns out that this is part of [Navajo Nation](link: https://fr.m.wikipedia.org/wiki/Fichier:Americanindiansmapcensusbureau.gif). 
 
-<font size="4"> Aside: What’s going on in Arizona?? </font> 
-In looking at the spending maps, Apache, Navajo and Coconino counties in Arizona all stood out. This region had low subsidies any way you cut it (government spending per acre or government spending per farm). Coincidentally they had high diversity with medium sized farms. They also stood out in their parity in farmer genders with nearly 50% of farm operators being women (much above the national average of [15% ](link: https://www.agcensus.usda.gov/Publications/2007/Online_Highlights/Fact_Sheets/Demographics/women.pdf); <!--- Check this number ---> . We were curious why this region was such an outlier. We took some time to investigate what was happening there. Here are some fun findings.
-The outlier region is Navajo Nation, and like many of the other Indian reservations, it’s quite poor. A look at [this map](link: https://fr.m.wikipedia.org/wiki/Fichier:Americanindiansmapcensusbureau.gif); of US Indian reservations (over 300) was enlightening. 
+The demographics of this region seems poorly matched with that of its representatives. And as a sovereign nation, it appears that either the government did not feel compelled to provide much ag subsidy or the Navajo Nation chose not to participate in the crop insurance. However, recently, [in 2016 and 2018](https://nativenewsonline.net/currents/crop-insurance-continues-to-yield-benefits-for-navajo-farmers/), the Navajo Nation did receive a [return](http://www.navajonationcouncil.org/pressReleases/2018/Feb/Agricultural_insurance_investment_earns_the_Navajo_Nation_over_$17_million_for_agricultural_infrastructure_projects.pdf) on purchased insurance. 
+</div>
 
-As a sovereign nation, it seems the government did not provide much ag subsidy or the Navajo Nation did not participate in the crop insurance. This seems to have [changed more recently](https://nativenewsonline.net/currents/crop-insurance-continues-to-yield-benefits-for-navajo-farmers/) in 2016 and got a [return](http://www.navajonationcouncil.org/pressReleases/2018/Feb/Agricultural_insurance_investment_earns_the_Navajo_Nation_over_$17_million_for_agricultural_infrastructure_projects.pdf) in 2018 on insurance they purchased.
+The resulting maps tell two different stories. Normalized by number of farms, the region with large farms gets most. On a per acre basis, the spending is highest in the [corn-belt](https://en.wikipedia.org/wiki/Corn_Belt#/media/File:Corn_belt.svg), which emphasizes that in America, [corn is king](https://grist.org/food/these-charts-show-why-corn-is-king/) - including king of subsides.
+
+Despite these two metrics, some regions gain and lose regardless of the metric. Examples include east North Dakota, parts of Louisiana and Arkansa and regions in Arizona.
 
 # What now?
 
 Whether we think about it or not, we support agriculture, directly when we buy groceries or indirectly when we pay taxes, so perhaps every once in a while it's good to ask: What do we prefer to support:small diverse farms or large efficient farms? This debate about farm size is often posed as “small organic” versus “large industrial,” and each camp touts the advantages of its side: small diverse farms are better buffered against volatility in weather, prices, and pathogens. On the other hand, large industrial operations excel at producing large quantities of one product efficiently, and can achieve economies of scale more readily. Data from the 2017 Agricultural Census is set to be released in early 2019. We'll be waiting to see whether anything has changed.
 
-In the meantime, at your next meal, ask yourself, does farm size matter? 
+In the meantime, at your next meal, we hope you'll ask yourself, does farm size matter? 
 
 <br/>
 
@@ -328,3 +346,20 @@ Joy Yang graduated with a BA in Statistics from UC Berkeley. She is currently a 
 </div>
 
 <br/><br/><br/><br/>
+
+<!-- Default Statcounter code for agvis.github.io
+https://agvis.github.io/ -->
+<script type="text/javascript">
+var sc_project=11824471; 
+var sc_invisible=1; 
+var sc_security="dfc4ae05"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="http://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="//c.statcounter.com/11824471/0/dfc4ae05/1/" alt="Web
+Analytics"></a></div></noscript>
+<!-- End of Statcounter Code -->
