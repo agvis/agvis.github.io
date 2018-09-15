@@ -1,2 +1,63 @@
 .leaflet-container { background: #F6F6F6; }
 
+.mapframe {
+	width: 100%;
+	height: 50vw;
+}
+
+.info {
+    font: 12px/14px Arial, Helvetica, sans-serif;
+    background: rgba(255,255,255,0);
+    box-shadow: 0 0 0px rgba(0,0,0,0.2);
+}
+
+.leaflet-bar {
+	box-shadow: 0 0px 0px rgba(0,0,0,0.35);
+	}
+.leaflet-bar a,
+.leaflet-bar a:hover {
+	background-color: #4A235A;
+	color: #ddd;
+	}
+.leaflet-bar a:hover {
+	background-color: #633974;
+	}
+.leaflet-bar a.leaflet-disabled {
+	background-color: #f4f4f4;
+	color: #bbb;
+	}
+
+.legend i {
+    width: 13px;
+    height: 13px;
+    }
+
+/* Whole document: */
+body{
+    font-family: Avenir;
+    font-size: 13pt;
+    }
+
+/* Headers */
+h1,{font-size: 20pt};
+h2,{font-size: 18pt};
+
+
+
+/* Two Colum Style*/
+#left {
+    left:-8.33%;
+    text-align: left;
+    float: left;
+    width:25%;
+    z-index:-10;
+}
+
+#right {
+    left:31.25%;
+    top: 75px;
+    float: right;
+    text-align: right;
+    z-index:-10;
+    width:50%;
+}	

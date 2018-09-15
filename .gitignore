@@ -1,8 +1,11 @@
 .DS_Store
-draft.Rmd
-draft.html
+draft*
 .additionalcss.css.swp
 additionalcss.css~
 index_cache/
 .gitignore~
+.RData
+.Rhistory
+leafletMaps/
+states.RData
 
