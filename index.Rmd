@@ -64,7 +64,7 @@ commCols = maxDiffColors[1:ncomm]
 
 # Chewing it Over
 
-Agriculture in the U.S has become so productive that now we often take it for granted. Chances are, you can enjoy three meals a day at a reasonable price without having to think too long about how to cultivate, raise or process your food. Yet only [1.4% of the US population](link: https://www.ers.usda.gov/data-products/ag-and-food-statistics-charting-the-essentials/ag-and-food-sectors-and-the-economy/) work directly in farming. How is this possible? Perhaps this topic merits some thought. Is this sustainable? What are some issues and challenges present in farming today?
+Agriculture in the U.S. has become so productive that now, we often take it for granted. Chances are, you can enjoy three meals a day at a reasonable price without having to think too long about how to cultivate, raise or process your food. Yet only [1.4% of the US population](link: https://www.ers.usda.gov/data-products/ag-and-food-statistics-charting-the-essentials/ag-and-food-sectors-and-the-economy/) work directly in farming. How is this possible? Perhaps this topic merits some thought. Is this sustainable? What are some issues and challenges present in farming today?
 
 # The Hollowing Out of Midsized Farms
 
