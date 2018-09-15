@@ -161,7 +161,7 @@ This trend toward farmland consolidation is not limited to between 2007 and 2012
 ![](images/sizesummary.png)
 Data Source: USDA
 
-Advances in technology has allowed large industrial operations to excel at producing large quantities of one product efficiently, and so large farms can achieve economies of scale more readily. The cost of these technologies has made it very difficult for midsized farms to compete. But at what point is large too large? Have certain regions of the US already hit this point? While this is a very rough graph, the answer is likely, yes, some farm sizes in some regions of the US may already be beyond the point of diminishing returns. Bigger may not always better.
+Advances in technology has allowed large industrial operations to excel at producing large quantities of one product efficiently, and so large farms can achieve economies of scale more readily. The cost of these technologies has made it very difficult for midsized farms to compete. But at what point is large too large? Have certain regions of the US already hit this point? While this is a very rough graph, the answer is likely, yes, farm sizes in some regions of the US may already be beyond the point of diminishing returns. Bigger may not always better.
 
 ```{r fig.width=9.5, fig.height=4.5, out.width = "100%", echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE, eval=TRUE, fig.align='center'}
 layout(matrix(1:2,ncol=2),widths=c(1.5,1))
@@ -270,11 +270,11 @@ legend("left",legend=gsub("\\.+"," ",colnames(agdata)[4:(4+ncomm-1)]),
        pch=15,col=commCols,cex=0.75,pt.cex=1.6,bty="n")
 ```
 
-We should be especially concerned about agricultural diversity because the prices of commodities are known to be particularly volatile. This volatility happens because of charcteristics of supply and demand. For certain crops, the supply depends on uncertain factors like weather and pests and the demand for that crop is rather fixed. For example, if the price of onions goes down, you are unlikely to respond by eating more onions. Therefore, an influx of onions on the market will be accompanied by a drastic fall in price. An interesting [story](https://www.npr.org/sections/money/2015/10/14/448718171/episode-657-the-tale-of-the-onion-king) of cornering the onion market can be heard here. 
+We should be especially concerned about agricultural diversity because the prices of commodities are known to be particularly volatile. This volatility happens because of particular charcteristics of supply and demand. For many crops, the supply depends on uncertain factors like weather and pests and the demand for that crop is rather fixed. For example, if the price of onions goes down, you are unlikely to respond by eating more onions. Therefore, an influx of onions on the market will be accompanied by a drastic fall in price. An interesting story of cornering the onion market can be heard [here](https://www.npr.org/sections/money/2015/10/14/448718171/episode-657-the-tale-of-the-onion-king). 
 
-So diversification seems like a good strategy, it helps reduce and mitigate risks and provides consumers with more variety. So we would expect communities that are tied to a monoculture and do not spread their risk to be poorly buffered against price shocks. However, from the diversity maps, we can see that counties across the U.S. skew toward monoculture. Why is this?
+So diversification seems like a good strategy, it helps reduce and mitigate risks and provides consumers with more variety. However, from the diversity maps, we can see that counties across the U.S. skew toward monoculture. The immediate gains of monoculture are just too tempting.
 
-This is where government payments and insurance play a role.
+While the analogy is not perfect, we find the tilt toward riskier practices that large farms are adopting is uncomfortably reminiscent of the risk seeking behavior undertaken by large banks. Is there anything that the government can do to reverse the incentives? What do the current policies incentivize?
 
 
 ## Government payments
