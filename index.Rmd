@@ -59,7 +59,7 @@ maxDiffColors = c(c("#E41A1C","#0000FF","#00FF00","#FFA500","#E7298A",
 commCols = maxDiffColors[1:ncomm]
 ```
 
-![](images/mosaicDiversityThinLight.png) 
+<br/>
 
 # Chewing it Over
 
@@ -112,7 +112,7 @@ m
 <!--<iframe class="mapframe" frameborder="0" scrolling="no" seamless="" style="float: left; width: 100%;" height=450pt src="leafletMaps/farmLandChange2.html"></iframe>-->
 
 <div style="width: 100%;">
-<div style="width: 50%; float: left;">
+<div style="width: 55%; float: left;">
 ```{r fig.width=5.3, fig.height=5.3, out.width = "100%", echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE, eval=TRUE, fig.align='center'}
 
 par(mar=c(4,4,4,3))
@@ -146,13 +146,16 @@ legend("bottomright",legend="\nFarm Consolidation",
 
 ```
 </div>
-<div style="width: 50%; float: left;">
+<div style="width: 45%; float: left;">
 
-This trend toward farmland consolidation is not limited to between 2007 and 2012. In the [last few decades](http://ota.fas.org/reports/8633.pdf), arguably, the most striking trend in U.S. agriculture is the shift in farm sizes. While the average is about 250 acres and has not changed much, there seems to be a ["hollowing out"](https://fivethirtyeight.com/features/big-farms-are-getting-bigger-and-most-small-farms-arent-really-farms-at-all/) of the midsized farms, and a shift toward the two extremes. Small farms fluctuate in number, and large farms are growing to monolithic sizes. 
+<br/><br/>
+The colors in the plot to the left corresponds to the coloring of the counties in the map above. Here, we define farm consolidation (red) to mean that the number of farms decreased in that county while the average farm sizes increased. On the other hand, farm partitioning (blue) here means that the number of farms increased while the average farm sizes decreased. Counties where the both farm size and farm number increased we classify as having experienced agricultural land expansion, and counties where both farm size and farm number decreased we classify as having experienced agricultural land decline.
 
 </div>
 <br style="clear: left;" />
 </div>
+
+This trend toward farmland consolidation is not limited to between 2007 and 2012. In the [last few decades](http://ota.fas.org/reports/8633.pdf), arguably, the most striking trend in U.S. agriculture is the shift in farm sizes. While the average is about 250 acres and has not changed much, there seems to be a ["hollowing out"](https://fivethirtyeight.com/features/big-farms-are-getting-bigger-and-most-small-farms-arent-really-farms-at-all/) of the midsized farms, and a shift toward the two extremes. Small farms fluctuate in number, and large farms are growing to monolithic sizes.
 
 ![](images/sizesummary.png)
 Data Source: USDA
@@ -302,32 +305,5 @@ As a sovereign nation, it seems the government did not provide much ag subsidy o
 Whether we think about it or not, we support agriculture, directly when we buy groceries or indirectly when we pay taxes, so perhaps every once in a while it's good to ask: What do we prefer to support:small diverse farms or large efficient farms? This debate about farm size is often posed as “small organic” versus “large industrial,” and each camp touts the advantages of its side: small diverse farms are better buffered against volatility in weather, prices, and pathogens. On the other hand, large industrial operations excel at producing large quantities of one product efficiently, and can achieve economies of scale more readily. Data from the 2017 Agricultural Census is set to be released in early 2019. We'll be waiting to see whether anything has changed.
 
 In the meantime, at your next meal, ask yourself, does farm size matter? 
-
-<br/><br/><br/><br/>
-
-<!--- 
-<div id="left">
-  ![](images/temp/Government_Spending_Per_Acre_Of_Farmland.png)
-</div>
-
-<div id="right">
-  ![](images/temp/Government_Spending_Per_Farm.png)
-</div>
---->
-
-Despite these 2 metrics, some regions gain and loose regardless of the metric. Such as east North Dakota, parts of Louisiana and Arkansa.
-
-In particular, we wondered, what’s going on in Arizona?
-In looking at the maps, counties Apache, Navajo and Coconino in Arizona all stood out. This region had low subsidies any way you cut it (government spending per acre or government spending per farm). Coincidentally they had high diversity with medium sized farms. They also stood out in their parity in farmer genders with nearly 50% of farm operators being women (much above the national average of [15% ](link: https://www.agcensus.usda.gov/Publications/2007/Online_Highlights/Fact_Sheets/Demographics/women.pdf); <!--- Check this number ---> . We were curious why this region was such an outlier. We took some time to investigate what was happening there. Here are some fun findings.
-The outlier region is Navajo Nation, and like many of the other Indian reservations, it’s quite poor. A look at [this map](link: https://fr.m.wikipedia.org/wiki/Fichier:Americanindiansmapcensusbureau.gif); of US Indian reservations (over 300) was enlightening. 
-
-
-As a sovereign nation, it seems the government did not provide much ag subsidy or the Navajo Nation did not participate in the crop insurance. This seems to have [changed more recently](https://nativenewsonline.net/currents/crop-insurance-continues-to-yield-benefits-for-navajo-farmers/) in 2016 and got a [return](http://www.navajonationcouncil.org/pressReleases/2018/Feb/Agricultural_insurance_investment_earns_the_Navajo_Nation_over_$17_million_for_agricultural_infrastructure_projects.pdf) in 2018 on insurance they purchased.
-
-# What now?
-
-Whether we think about it or not, we support agriculture, directly when we buy groceries or indirectly when we pay taxes, so perhaps every once in a while it's good to ask: What do we prefer to support:small diverse farms or large efficient farms? This debate about farm size is often posed as “small organic” versus “large industrial,” and each camp touts the advantages of its side: small diverse farms are better buffered against volatility in weather, prices, and pathogens. On the other hand, large industrial operations excel at producing large quantities of one product efficiently, and can achieve economies of scale more readily. 
-
-Data from the 2017 Agricultural Census is set to be released early 2019. We'll be waiting to see whether anything has changed.
 
 <br/><br/><br/><br/>
