@@ -1,5 +1,6 @@
 ---
 title: ""
+authors: "Anjuli Jain and Joy Yang"
 output:
   html_document:
     css: additionalcss.css
@@ -91,8 +92,8 @@ quadCols[is.na(quadCols)] = "#D3D3D3"
 
 ```{r out.width = "100%", echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE, eval=TRUE}
 m.labels = lapply(paste(farmmap@data$county,", ",farmmap@data$state,
-				" <br/>Average Farm Size: ",round(2^a*100)/100," times change",
-				" <br/>Number of Farms: ",round(2^b*100)/100," times change",sep=""),
+				" <br/>Average Farm Size Change: ",round(2^a*100)/100," x",
+				" <br/>Number of Farms Change: ",round(2^b*100)/100," x",sep=""),
 				htmltools::HTML)
 
 m = leaflet(farmmap) %>% setView(-96,37.8,4.2)
@@ -149,7 +150,7 @@ legend("bottomright",legend="\nFarm Consolidation",
 <div style="width: 45%; float: left;">
 
 <br/><br/>
-The colors in the plot to the left corresponds to the coloring of the counties in the map above. Here, we define farm consolidation (red) to mean that the number of farms decreased in that county while the average farm sizes increased. On the other hand, farm partitioning (blue) here means that the number of farms increased while the average farm sizes decreased. Counties where the both farm size and farm number increased we classify as having experienced agricultural land expansion, and counties where both farm size and farm number decreased we classify as having experienced agricultural land decline.
+The colors in the plot to the left corresponds to the coloring of the counties in the map above. Here, we define farm consolidation (red) to mean that the number of farms decreased in that county while the average farm sizes increased. On the other hand, farm partitioning (blue) means that the number of farms increased while the average farm sizes decreased. Counties where the both farm size and farm number increased we classify as having experienced agricultural land expansion, and counties where both farm size and farm number decreased we classify as having experienced agricultural land decline.
 
 </div>
 <br style="clear: left;" />
@@ -178,7 +179,7 @@ legend("left",legend=gsub("\\.+"," ",colnames(agdata)[4:(4+ncomm-1)]),
 
 ```
 
-Even if bigger is not always better, can bigger be worse? Do do we lose anything by losing midsized farms? Since large farms gain efficiency through monocultures, counties with smaller farms tend to be more diverse than counties with large farms.The loss of small and midsized farms may mean less diversity, but why should diversity matter?  
+Even if bigger is not always better, can bigger be worse? Do we lose anything by losing midsized farms? Since large farms gain efficiency through monocultures, counties with smaller farms tend to be more diverse than counties with large farms.The loss of small and midsized farms may mean less diversity, but why should diversity matter?  
 
 ```{r fig.width=9.5, fig.height=4.5, out.width = "100%", echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE, eval=FALSE, fig.align='center'}
 layout(matrix(1:2,ncol=2),widths=c(1.7,1))
@@ -242,11 +243,11 @@ legend("right",legend=gsub("\\.+"," ",colnames(agdata)[11:18]),
        pch=15,col=commCols[9:16],cex=0.75,pt.cex=1.6,bty="n")
 ```
 
-The color of the county corresponds to the dominant commodity (in contribution toward market value). The saturation corresponds to the diversity of commodities in the county. The more saturated the color, the closer the county is to a monoculture. In the map above, we can see a large swath of green that corresponds to the corn belt, and the large brown patch shows the pasturelands. A greyscale version of the map is shown below identifying regions of high and low diversity.
-
 <div id="right">
 ![](images/DiversityBlues.png) 
 </div>
+
+The color of the county corresponds to the dominant commodity (in contribution toward market value). The saturation corresponds to the diversity of commodities in the county. The more saturated the color, the closer the county is to a monoculture. In the map above, we can see a large swath of green that corresponds to the corn belt, and the large brown patch shows the pasturelands. A greyscale version of the map is shown below identifying regions of high and low diversity.
 
 The diversity metric shows how dependent a county is on one product, which has implications for how resilient the community is to price shocks. Low shannon diversity can be thought of as how dependent a county is on one product. To provide some more intuition about the diversity metric, here is an example of two counties on the extreme ends of diversity:
 
@@ -305,5 +306,25 @@ As a sovereign nation, it seems the government did not provide much ag subsidy o
 Whether we think about it or not, we support agriculture, directly when we buy groceries or indirectly when we pay taxes, so perhaps every once in a while it's good to ask: What do we prefer to support:small diverse farms or large efficient farms? This debate about farm size is often posed as “small organic” versus “large industrial,” and each camp touts the advantages of its side: small diverse farms are better buffered against volatility in weather, prices, and pathogens. On the other hand, large industrial operations excel at producing large quantities of one product efficiently, and can achieve economies of scale more readily. Data from the 2017 Agricultural Census is set to be released in early 2019. We'll be waiting to see whether anything has changed.
 
 In the meantime, at your next meal, ask yourself, does farm size matter? 
+
+<br/>
+
+### About the authors
+
+<div style="width: 100%;">
+<img style="padding: 0 18px 5px 0; width: 20%; float: left;" src="images/AuthorAnjuli.JPG"/>
+<div style="width: 80%; float: left;" class="author">
+Anjuli Jain Figueroa earned her BS in Civil and Environmental Engineering from University of Michigan, 2009, a MSc. Technology and Policy from MIT, 2012 and is currently working on her PhD in Civil and Environmental Engineering at MIT She studies the coupling of the built and the natural environment, in particular how we manage our natural resources (i.e water and land) and the economic and environmental impacts of different management strategies. Anjuli investigates the tradeoffs between yield, environmental impacts and economic costs of different agricultural management strategies. [[website](http://ajainf.mit.edu/)] | [[twitter](https://twitter.com/ajf_mi)]
+</div>
+<br style="clear: left; width: 100%;" />
+</div>
+
+<div style="width: 100%;"> 
+<img style="padding: 0 18px 5px 0; width: 20%; float: left;" src="images/AuthorJoy.png"/>
+<div style="width: 80%; float: left;" class="author">
+Joy Yang graduated with a BA in Statistics from UC Berkeley. She is currently a PhD candidate in Computational and Systems Biology at MIT. Her research focuses on statistical methods for finding the genetic underpinnings for bacteriophage infections. She is broadly interested in methods for analyzing and visualizing large complex datasets. In her spare time, she likes to think about ways of making early statistics education more like fun and games. [[website](http://www.mit.edu/~yangjy/)] | [[twitter](https://twitter.com/ratatstats)]
+</div>
+<br style="clear: left; width: 100%;" />
+</div>
 
 <br/><br/><br/><br/>
