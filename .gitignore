@@ -1,0 +1,12 @@
+.DS_Store
+draft*
+.additionalcss.css.swp
+additionalcss.css~
+index_cache/
+.gitignore~
+.RData
+.Rhistory
+leafletMaps/
+states.RData
+index_files/
+
