@@ -42,8 +42,6 @@ body{
 h1,{font-size: 20pt};
 h2,{font-size: 18pt};
 
-
-
 /* Two Colum Style*/
 #left {
     left:-8.33%;
@@ -57,7 +55,24 @@ h2,{font-size: 18pt};
     left:31.25%;
     top: 75px;
     float: right;
-    text-align: right;
+    text-align: left;
     z-index:-10;
     width:50%;
 }	
+
+#aside {
+    left:31.25%;
+    top: 75px;
+    float: right;
+    text-align: left;
+    z-index:-10;
+    width:40%;
+    font-size: 9pt;
+    padding-left: 35px;
+}	
+
+.author {
+    font-size: 11pt;
+    }
+
+
