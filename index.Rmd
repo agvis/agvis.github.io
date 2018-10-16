@@ -96,7 +96,8 @@ m.labels = lapply(paste(farmmap@data$county,", ",farmmap@data$state,
 				" <br/>Number of Farms Change: ",round(2^b*100)/100," x",sep=""),
 				htmltools::HTML)
 
-m = leaflet(farmmap) %>% setView(-96,37.8,4.2)
+m = leaflet(farmmap) %>%         
+      setView(-96,37.8,4.2)
 m = m %>% addPolygons(
 		  fillColor = quadCols,
 		  label = m.labels,
@@ -277,27 +278,20 @@ So diversification seems like a good strategy, it helps reduce and mitigate risk
 
 ## Government payments
 
-The question is, what is the role of government payments? Should government payments (1) protect farmers against price shocks so that they don’t lose everything if a bad year hits? (2) incentivize farmers to produce enough food so that people don’t go hungry? (3) make sure that farms don’t overtake natural wildlife? The U.S Farm Bill encompasses all three goals. The bill helps codify crop insurance in the United States and has huge impact on what is grown, produced and eaten. The Farm Bill can be rather controversial. Some consider it “welfare for the well-off” and others highlight its importance to stable food supply. An interesting and detailed discussion of the farm bill can be found [here](https://www.farmaid.org/blog/farm-bill-101/) . Regardless of the view, we wanted to know who gets the subsidies?
-
-In asking this question, we encountered the paradoxical situation that the largest amount of government payments happen to be going to areas with the highest market value of commodities. This is because the largest farms have the highest market value of commodities, but the largest farms also receive the highest amounts in government payments.
-
-```{r fig.width=11, fig.height=5, out.width = "90%", echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE, eval=TRUE, fig.align='center'}
-layout(matrix(1:2,ncol=2),widths=c(1,1))
+<div id="right">
+```{r fig.width=5, fig.height=4.5, out.width = "90%", echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE, eval=TRUE, fig.align='center'}
 par(mar=c(4,4,4,3))
 plot(log10(agdata$Market.Value.of.Products.Sold),log10(agdata$Government.Payments),
      col=commCols[agdata$dominantcomm],
      #xlim=c(1,max(log10(agdata$Average.Size.of.Farm),na.rm=TRUE)),
      ylab = "log10(Total Government Spending in County)",
      xlab="log10(Market Value of Products Sold)",main="Government Spending is Directly Tied to\nMarket Value of Products Sold")
-par(mar=c(4,4,4,3))
-plot(log10(agdata$Average.Size.of.Farm),agdata$farmentropy,
-     col=commCols[agdata$dominantcomm],
-     xlim=c(1,max(log10(agdata$Average.Size.of.Farm),na.rm=TRUE)),
-     xlab = "log10(Average Acres Per Farm in County)",
-     ylab="County Commodity Diversity",main="Farm Size Limits Diversity of\nCommodities Produced")
 ```
+</div>
 
-Additionally, some forms of government payments and insurance on specific commodities can incentivize large monoculture farms because the risk is no longer borne by the farmer. This can have another positive feedback effect where more insurance is needed to protect against instability of increasing monoculture.
+The question is, what is the role of government payments? Should government payments (1) protect farmers against price shocks so that they don’t lose everything if a bad year hits? (2) incentivize farmers to produce enough food so that people don’t go hungry? (3) make sure that farms don’t overtake natural wildlife? The U.S Farm Bill encompasses all three goals. The bill helps codify crop insurance in the United States and has huge impact on what is grown, produced and eaten. The Farm Bill can be rather controversial. Some consider it “welfare for the well-off” and others highlight its importance to stable food supply. An interesting and detailed discussion of the farm bill can be found [here](https://www.farmaid.org/blog/farm-bill-101/) . Regardless of the view, we wanted to know who gets the subsidies?
+
+In asking this question, we encountered the paradoxical situation that the largest amount of government payments happen to be going to areas with the highest market value of commodities. This is because the largest farms have the highest market value of commodities, but the largest farms also receive the highest amounts in government payments.
 
 Next, we mapped the data on two metrics:
 1) government payments per farms in the county; and 
